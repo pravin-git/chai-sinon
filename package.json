@@ -1,0 +1,17 @@
+{
+  "name": "sinontest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^7.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0"
+  }
+}
