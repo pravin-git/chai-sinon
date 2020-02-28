@@ -4,6 +4,14 @@ const expect = chai.expect;
 const sinon = require("sinon");
 const controller = require("../src/controller.js");
 
+
+const user = {
+    addUser: (name) =>{
+        console.log('I am in');
+        this.name = name;
+    }
+}
+/********************Spies************************/
 describe("smoke test", function () {
     it("checks equality", function () {
         assert.equal(true, true);
@@ -39,3 +47,20 @@ describe("getIndexPage with spy", () =>{
         expect(res.send.firstCall.args[0]).to.equal("Pravin");
     })
 })
+
+describe("User tests" , ()=>{
+    it("should add a user", ()=>{
+        sinon.spy(user, "addUser");
+        console.log(user.addUser);
+        user.addUser('Pravin');
+        expect(user.addUser.calledOnce).to.be.true;
+    })
+})
+/********************Spies************************/
+
+/********************Stubs************************/
+/********************Stubs************************/
+
+
+/********************mocks************************/
+/********************mocks************************/
