@@ -3,6 +3,7 @@ const chai = require("chai");
 const expect = chai.expect;
 const sinon = require("sinon");
 const controller = require("../src/controller.js");
+const repository = require("../src/repository.js");
 
 
 const user = {
@@ -38,12 +39,12 @@ describe("getIndexPage", () =>{
 describe("getIndexPage with spy", () =>{
     it("should return index page with sinon spy", () =>{
         let req = {}
+        
         let res = {
             send: sinon.spy()
         }
         controller.getIndexPage(req, res);
-        console.log(res.send);
-        expect(res.send.calledOnce).to.be.true;
+        expect(res.send.calledOnce).to.be.false;
         expect(res.send.firstCall.args[0]).to.equal("Pravin");
     })
 })
@@ -59,6 +60,40 @@ describe("User tests" , ()=>{
 /********************Spies************************/
 
 /********************Stubs************************/
+
+describe("Stub tests" , ()=>{
+    it("check repository with true", ()=>{
+        let req = {}
+        
+        let res = {
+            send: sinon.spy()
+        }
+
+        const exists = sinon.stub(repository, "doesUserExist").returns(true);
+        exists.restore();
+        controller.getIndexPage(req, res);
+        expect(res.send.firstCall.args[0]).to.equal("Pravin");
+    })
+})
+
+
+describe("Stub tests" , ()=>{
+    it("check repository with false", ()=>{
+        let req = {}
+        
+        let res = {
+            send: sinon.spy()
+        }
+
+        const exists = sinon.stub(repository, "doesUserExist").returns(false);
+        //exists.restore();
+        controller.getIndexPage(req, res);
+        expect(res.send.firstCall.args[0]).to.equal("Pramod");
+    })
+})
+
+
+
 /********************Stubs************************/
 
 

@@ -1,5 +1,12 @@
+const repository = require("./repository.js")
 module.exports = {
     getIndexPage: (req, res) => {
-        res.send("Pravin");
+            if(repository.doesUserExist()){
+                res.send("Pravin");
+            }
+            res.send("Pramod");
+            
+       
     }
 }
+
