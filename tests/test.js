@@ -70,9 +70,9 @@ describe("Stub tests" , ()=>{
         }
 
         const exists = sinon.stub(repository, "doesUserExist").returns(true);
-        exists.restore();
         controller.getIndexPage(req, res);
         expect(res.send.firstCall.args[0]).to.equal("Pravin");
+        exists.restore();
     })
 })
 
@@ -86,9 +86,9 @@ describe("Stub tests" , ()=>{
         }
 
         const exists = sinon.stub(repository, "doesUserExist").returns(false);
-        //exists.restore();
         controller.getIndexPage(req, res);
         expect(res.send.firstCall.args[0]).to.equal("Pramod");
+        exists.restore();
     })
 })
 
